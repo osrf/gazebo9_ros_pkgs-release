@@ -2,35 +2,41 @@
 Changelog for package gazebo_ros
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-2.5.15 (2018-02-12)
--------------------
-* Fix last gazebo8 warnings! (`#658 <https://github.com/ros-simulation/gazebo_ros_pkgs/issues/658>`_)
-* Fix for relative frame errors (`#605 <https://github.com/ros-simulation/gazebo_ros_pkgs/issues/605>`_)
-* Fix gazebo8 warnings part 10: ifdefs for GetModel, GetEntity, Light (`#656 <https://github.com/ros-simulation/gazebo_ros_pkgs/issues/656>`_)
-* gazebo8 warnings: ifdefs for Get.*Vel() (`#653 <https://github.com/ros-simulation/gazebo_ros_pkgs/issues/653>`_)
-* Prevents GAZEBO_MODEL_DATABASE_URI from being overwritten (`#644 <https://github.com/ros-simulation/gazebo_ros_pkgs/issues/644>`_)
-* Fix gazebo8 warnings part 7: ifdef's for Joint::GetAngle and some cleanup (`#642 <https://github.com/ros-simulation/gazebo_ros_pkgs/issues/642>`_)
-* Contributors: Hamza Merzić, R, Steven Peters
+2.7.4 (2018-02-12)
+------------------
+* Fix last gazebo8 warnings! (lunar-devel) (`#664 <https://github.com/ros-simulation/gazebo_ros_pkgs/issues/664>`_)
+* Fix for relative frame errors (lunar-devel) (`#663 <https://github.com/ros-simulation/gazebo_ros_pkgs/issues/663>`_)
+* Fix gazebo8 warnings part 7: retry `#642 <https://github.com/ros-simulation/gazebo_ros_pkgs/issues/642>`_ on lunar (`#660 <https://github.com/ros-simulation/gazebo_ros_pkgs/issues/660>`_)
+* Fix gazebo8 warnings part 10: ifdefs for GetModel, GetEntity, Light (lunar-devel) (`#657 <https://github.com/ros-simulation/gazebo_ros_pkgs/issues/657>`_)
+* gazebo8 warnings: ifdefs for Get.*Vel() (`#655 <https://github.com/ros-simulation/gazebo_ros_pkgs/issues/655>`_)
+* [gazebo_ros] don't overwrite parameter "use_sim_time" (lunar-devel) (`#607 <https://github.com/ros-simulation/gazebo_ros_pkgs/issues/607>`_)
+* Fix gazebo8 warnings part 8: ifdef's for GetWorldPose (lunar-devel) (`#652 <https://github.com/ros-simulation/gazebo_ros_pkgs/issues/652>`_)
+* Prevents GAZEBO_MODEL_DATABASE_URI from being overwritten (`#649 <https://github.com/ros-simulation/gazebo_ros_pkgs/issues/649>`_)
+* for gazebo8+, call functions without Get (`#640 <https://github.com/ros-simulation/gazebo_ros_pkgs/issues/640>`_)
+* Contributors: Jose Luis Rivero, Steven Peters
 
-2.5.14 (2017-12-11)
--------------------
-* for gazebo8+, call functions without Get (`#639 <https://github.com/ros-simulation/gazebo_ros_pkgs/issues/639>`_)
-* Fix gazebo8 warnings part 5: ignition math in gazebo_ros (`#635 <https://github.com/ros-simulation/gazebo_ros_pkgs/issues/635>`_)
-* Fix gazebo8 warnings part 4: convert remaining local variables in plugins to ign-math (`#633 <https://github.com/ros-simulation/gazebo_ros_pkgs/issues/633>`_)
-* gazebo_ros: fix support for python3 (`#622 <https://github.com/ros-simulation/gazebo_ros_pkgs/issues/622>`_)
-* gazebo_ros_api_plugin: improve plugin xml parsing (`#625 <https://github.com/ros-simulation/gazebo_ros_pkgs/issues/625>`_)
-* Replace Events::Disconnect* with pointer reset (`#623 <https://github.com/ros-simulation/gazebo_ros_pkgs/issues/623>`_)
-* Install spawn_model using catkin_install_python (`#621 <https://github.com/ros-simulation/gazebo_ros_pkgs/issues/621>`_)
-* [gazebo_ros] don't overwrite parameter "use_sim_time" (`#606 <https://github.com/ros-simulation/gazebo_ros_pkgs/issues/606>`_)
-  * Parameter /use_sim_time is only set if not present on Parameter Server
-* Contributors: Jose Luis Rivero, Manuel Ilg, Mike Purvis, Nils Rokita, Steven Peters
+2.7.3 (2017-12-11)
+------------------
+* gazebo_ros_api_plugin: improve plugin xml parsing (`#627 <https://github.com/ros-simulation/gazebo_ros_pkgs/issues/627>`_)
+* Fix gazebo8 warnings part 5: ignition math in gazebo_ros (lunar-devel) (`#636 <https://github.com/ros-simulation/gazebo_ros_pkgs/issues/636>`_)
+* Fix gazebo8 warnings part 4: convert remaining local variables in plugins to ign-math (lunar-devel) (`#634 <https://github.com/ros-simulation/gazebo_ros_pkgs/issues/634>`_)
+* gazebo_ros: fix support for python3 (`#629 <https://github.com/ros-simulation/gazebo_ros_pkgs/issues/629>`_)
+* Replace Events::Disconnect* with pointer reset (`#626 <https://github.com/ros-simulation/gazebo_ros_pkgs/issues/626>`_)
+* Install spawn_model using catkin_install_python (`#624 <https://github.com/ros-simulation/gazebo_ros_pkgs/issues/624>`_)
+* Quote arguments to echo in libcommon.sh (`#591 <https://github.com/ros-simulation/gazebo_ros_pkgs/issues/591>`_)
+* Contributors: Jose Luis Rivero
 
-2.5.13 (2017-06-24)
--------------------
-* Quote arguments to echo in libcommon.sh (`#590 <https://github.com/ros-simulation/gazebo_ros_pkgs/issues/590>`_)
-* Add catkin package(s) to provide the default version of Gazebo (`#571 <https://github.com/ros-simulation/gazebo_ros_pkgs/issues/571>`_)
-  * Added catkin package gazebo_dev which provides the cmake config of the installed Gazebo version
-* Contributors: Jose Luis Rivero, daewok
+2.7.2 (2017-05-21)
+------------------
+* Revert gazebo8 changes in Lunar and back to use gazebo7 (`#583 <https://github.com/ros-simulation/gazebo_ros_pkgs/issues/583>`_)
+* Contributors: Jose Luis Rivero
+
+2.7.1 (2017-04-28)
+------------------
+* Fixes for compilation and warnings in Lunar-devel  (`#573 <https://github.com/ros-simulation/gazebo_ros_pkgs/issues/573>`_)
+  Multiple fixes for compilation and warnings coming from Gazebo8 and ignition-math3
+* Add catkin package(s) to provide the default version of Gazebo - take II (kinetic-devel) (`#571 <https://github.com/ros-simulation/gazebo_ros_pkgs/issues/571>`_)
+* Contributors: Jose Luis Rivero
 
 2.5.12 (2017-04-25)
 -------------------

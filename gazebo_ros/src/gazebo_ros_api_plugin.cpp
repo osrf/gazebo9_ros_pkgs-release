@@ -1536,7 +1536,11 @@ bool GazeboRosApiPlugin::setModelState(gazebo_msgs::SetModelState::Request &req,
     world_->SetPaused(true);
     model->SetWorldPose(target_pose);
     world_->SetPaused(is_paused);
+#if GAZEBO_MAJOR_VERSION >= 8
     //ignition::math::Pose3d p3d = model->WorldPose();
+#else
+    //ignition::math::Pose3d p3d = model->GetWorldPose().Ign();
+#endif
     //ROS_ERROR_NAMED("api_plugin", "model updated state: %f %f %f",p3d.Pos().X(),p3d.Pos().Y(),p3d.Pos().Z());
 
     // set model velocity
@@ -1867,12 +1871,9 @@ bool GazeboRosApiPlugin::applyBodyWrench(gazebo_msgs::ApplyBodyWrench::Request &
     //        first, translate by reference point to the body frame
 #if GAZEBO_MAJOR_VERSION >= 8
     ignition::math::Pose3d framePose = frame->WorldPose();
-#else
-    ignition::math::Pose3d framePose = frame->GetWorldPose().Ign();
-#endif
-#if GAZEBO_MAJOR_VERSION >= 8
     ignition::math::Pose3d bodyPose = body->WorldPose();
 #else
+    ignition::math::Pose3d framePose = frame->GetWorldPose().Ign();
     ignition::math::Pose3d bodyPose = body->GetWorldPose().Ign();
 #endif
     ignition::math::Pose3d target_to_reference = framePose - bodyPose;
