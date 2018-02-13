@@ -1,0 +1,25 @@
+From a880effd8142ef4498bc64c26dea7434a1da1090 Mon Sep 17 00:00:00 2001
+From: Jose Luis Rivero <jrivero@osrfoundation.org>
+Date: Mon, 12 Feb 2018 16:58:08 -0800
+Subject: [PATCH 1/2] Patch name to release -9 version
+
+---
+ debian/control.em | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/debian/control.em b/debian/control.em
+index 7cbf65a..ab36900 100644
+--- a/debian/control.em
++++ b/debian/control.em
+@@ -6,7 +6,7 @@ Build-Depends: debhelper (>= @(debhelper_version).0.0), @(', '.join(BuildDepends
+ Homepage: @(Homepage)
+ Standards-Version: 3.9.2
+ 
+-Package: @(Package)
++Package: @(Package.replace('gazebo-','gazebo9-'))
+ Architecture: any
+ Depends: ${shlibs:Depends}, ${misc:Depends}, @(', '.join(Depends))
+ @[if Conflicts]Conflicts: @(', '.join(Conflicts))@\n@[end if]@
+-- 
+2.7.4
+
