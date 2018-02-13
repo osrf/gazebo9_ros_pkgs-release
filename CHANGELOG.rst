@@ -2,6 +2,15 @@
 Changelog for package gazebo_ros_pkgs
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
+2.7.4 (2018-02-12)
+------------------
+
+2.7.3 (2017-12-11)
+------------------
+
+2.7.2 (2017-05-21)
+------------------
+
 2.7.1 (2017-04-28)
 ------------------
 * Add catkin package(s) to provide the default version of Gazebo (kinetic-devel) (`#571 <https://github.com/ros-simulation/gazebo_ros_pkgs/issues/571>`_)
