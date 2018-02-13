@@ -157,7 +157,7 @@ void GazeboRosBumper::OnContact()
       *Simulator::Instance()->GetMRMutex());
     // look through all models in the world, search for body
     // name that matches frameName
-    physics::Model_V all_models = World::Instance()->GetModels();
+    physics::Model_V all_models = World::Instance()->Models();
     for (physics::Model_V::iterator iter = all_models.begin();
       iter != all_models.end(); iter++)
     {
@@ -184,8 +184,8 @@ void GazeboRosBumper::OnContact()
   if (myFrame)
   {
     frame_pose = myFrame->WorldPose();  //-this->myBody->GetCoMPose();
-    frame_pos = frame_pose.pos;
-    frame_rot = frame_pose.rot;
+    frame_pos = frame_pose.Pos();
+    frame_rot = frame_pose.Rot();
   }
   else
   */
@@ -242,13 +242,13 @@ void GazeboRosBumper::OnContact()
     {
       // loop through individual contacts between collision1 and collision2
       // gzerr << j << "  Position:"
-      //       << contact.position(j).X()() << " "
-      //       << contact.position(j).Y()() << " "
-      //       << contact.position(j).Z()() << "\n";
+      //       << contact.position(j).x() << " "
+      //       << contact.position(j).y() << " "
+      //       << contact.position(j).z() << "\n";
       // gzerr << "   Normal:"
-      //       << contact.normal(j).X()() << " "
-      //       << contact.normal(j).Y()() << " "
-      //       << contact.normal(j).Z()() << "\n";
+      //       << contact.normal(j).x() << " "
+      //       << contact.normal(j).y() << " "
+      //       << contact.normal(j).z() << "\n";
       // gzerr << "   Depth:" << contact.depth(j) << "\n";
 
       // Get force, torque and rotate into user specified frame.
@@ -282,9 +282,9 @@ void GazeboRosBumper::OnContact()
       // transform contact positions into relative frame
       // set contact positions
       ignition::math::Vector3d position = frame_rot.RotateVectorReverse(
-         ignition::math::Vector3d(contact.position(j).x(),
-                                  contact.position(j).y(),
-                                  contact.position(j).z()) - frame_pos);
+          ignition::math::Vector3d(contact.position(j).x(),
+                                   contact.position(j).y(),
+                                   contact.position(j).z()) - frame_pos);
       geometry_msgs::Vector3 contact_position;
       contact_position.x = position.X();
       contact_position.y = position.Y();
@@ -293,10 +293,10 @@ void GazeboRosBumper::OnContact()
 
       // rotate normal into user specified frame.
       // frame_rot is identity if world is used.
-     ignition::math::Vector3d normal = frame_rot.RotateVectorReverse(
-         ignition::math::Vector3d(contact.normal(j).x(),
-                                  contact.normal(j).y(),
-                                  contact.normal(j).z()));
+      ignition::math::Vector3d normal = frame_rot.RotateVectorReverse(
+          ignition::math::Vector3d(contact.normal(j).x(),
+                                   contact.normal(j).y(),
+                                   contact.normal(j).z()));
       // set contact normals
       geometry_msgs::Vector3 contact_normal;
       contact_normal.x = normal.X();

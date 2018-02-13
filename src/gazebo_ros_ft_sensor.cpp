@@ -39,7 +39,6 @@ GazeboRosFT::GazeboRosFT()
 // Destructor
 GazeboRosFT::~GazeboRosFT()
 {
-  // Conversion from DisconnectWorldUpdateBegin in migration from gazebo7
   this->update_connection_.reset();
   // Custom Callback Queue
   this->queue_.clear();
@@ -158,7 +157,11 @@ void GazeboRosFT::FTDisconnect()
 // Update the controller
 void GazeboRosFT::UpdateChild()
 {
+#if GAZEBO_MAJOR_VERSION >= 8
   common::Time cur_time = this->world_->SimTime();
+#else
+  common::Time cur_time = this->world_->GetSimTime();
+#endif
 
   // rate control
   if (this->update_rate_ > 0 &&
@@ -178,15 +181,25 @@ void GazeboRosFT::UpdateChild()
   // The wrench is reported in the CHILD <frame>
   // The <measure_direction> is child_to_parent
   wrench = this->joint_->GetForceTorque(0);
+#if GAZEBO_MAJOR_VERSION >= 8
   force = wrench.body2Force;
   torque = wrench.body2Torque;
+#else
+  force = wrench.body2Force.Ign();
+  torque = wrench.body2Torque.Ign();
+#endif
 
 
   this->lock_.lock();
   // copy data into wrench message
   this->wrench_msg_.header.frame_id = this->frame_name_;
+#if GAZEBO_MAJOR_VERSION >= 8
   this->wrench_msg_.header.stamp.sec = (this->world_->SimTime()).sec;
   this->wrench_msg_.header.stamp.nsec = (this->world_->SimTime()).nsec;
+#else
+  this->wrench_msg_.header.stamp.sec = (this->world_->GetSimTime()).sec;
+  this->wrench_msg_.header.stamp.nsec = (this->world_->GetSimTime()).nsec;
+#endif
 
   this->wrench_msg_.wrench.force.x = force.X() + this->GaussianKernel(0, this->gaussian_noise_);
   this->wrench_msg_.wrench.force.y = force.Y() + this->GaussianKernel(0, this->gaussian_noise_);
