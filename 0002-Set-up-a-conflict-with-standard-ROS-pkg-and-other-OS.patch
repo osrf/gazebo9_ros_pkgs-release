@@ -1,4 +1,4 @@
-From 95001204c7b648c4992b872e98fbfc5b550ef8a3 Mon Sep 17 00:00:00 2001
+From 6e5bf5bab41056b1cc0e84c64e92c71b598a78d2 Mon Sep 17 00:00:00 2001
 From: Jose Luis Rivero <jrivero@osrfoundation.org>
 Date: Mon, 12 Feb 2018 16:58:12 -0800
 Subject: [PATCH 2/2] Set up a conflict with standard ROS pkg and other OSRF
