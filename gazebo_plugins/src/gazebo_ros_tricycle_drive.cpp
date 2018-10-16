@@ -317,7 +317,15 @@ void GazeboRosTricycleDrive::motorController ( double target_speed, double targe
       {
         applied_angle = target_angle;
       }
+#if GAZEBO_MAJOR_VERSION >= 9
+      joint_steering_->SetPosition(0, applied_angle, true);
+#else
+      ROS_WARN_ONCE("The tricycle_drive plugin is using the Joint::SetPosition method without preserving the link velocity.");
+      ROS_WARN_ONCE("As a result, gravity will not be simulated correctly for your model.");
+      ROS_WARN_ONCE("Please upgrade to Gazebo 9.");
+      ROS_WARN_ONCE("For details, see https://github.com/ros-simulation/gazebo_ros_pkgs/issues/612");
       joint_steering_->SetPosition(0, applied_angle);
+#endif
     }
     //ROS_INFO_NAMED("tricycle_drive", "target: [%3.2f, %3.2f], current: [%3.2f, %3.2f], applied: [%3.2f, %3.2f/%3.2f] ",
     //            target_speed, target_angle, current_speed, current_angle, applied_speed, applied_angle, applied_steering_speed );
